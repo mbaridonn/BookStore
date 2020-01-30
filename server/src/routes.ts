@@ -3,7 +3,7 @@ import * as booksModule from "./models/books";
 
 export const register = (app: express.Application) => {
 
-    var books = booksModule.books;
+    const books = booksModule.books;
 
     app.get("/api/books", (req, res) => {
         res.json(books);
