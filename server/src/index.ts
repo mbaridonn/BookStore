@@ -9,11 +9,6 @@ app.use(bodyParser.json());
 
 routes.register(app);
 
-// define a route handler for the default home page
-app.get( "/", ( req, res ) => {
-    res.send( "Hello world!" );
-} );
-
 // start the Express server
 app.listen( port, () => {
     // tslint:disable-next-line:no-console
