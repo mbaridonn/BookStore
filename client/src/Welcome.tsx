@@ -1,10 +1,10 @@
 import React from 'react';
 
-export interface WelcomeProps {
+interface WelcomeProps {
     name: string;
 }
 
 const Welcome = (props: WelcomeProps) =>
-    <div>Hola {props.name}</div>
+    <h2>Hola {props.name}</h2>
 
 export default Welcome;
