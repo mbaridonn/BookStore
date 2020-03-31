@@ -6,6 +6,8 @@ import {
   Link
 } from "react-router-dom";
 import Welcome from './Welcome';
+import { Home } from './Home/Home';
+import { Books } from './Books/Books';
 
 const App = () =>
   <Router>
@@ -18,10 +20,16 @@ const App = () =>
           <li>
             <Link to="/welcome">Welcome</Link>
           </li>
+          <li>
+            <Link to="books">Books</Link>
+          </li>
         </ul>
       </nav>
 
       <Switch>
+        <Route path="/books">
+          <Books />
+        </Route>
         <Route path="/welcome">
           <Welcome name="Martiniano" />
         </Route>
@@ -34,6 +42,3 @@ const App = () =>
   </Router>
 
 export default App;
-
-const Home = () =>
-  <h2>Home</h2>;
