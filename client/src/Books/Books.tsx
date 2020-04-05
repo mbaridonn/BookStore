@@ -7,41 +7,57 @@ interface IBook {
     author: string
 }
 
-const BooksMock = [
-    {
-        name: "Davinci's code",
-        author: "Dan Brown"
-    },
-    {
-        name: "Inferno",
-        author: "Dan Brown"
-    }
-];
-
 export const Books = () => {
 
-    const [books, setBooks] = useState<IBook[]>(BooksMock);
+    let nameInput: any;
+    let authorInput: any;
+    const [books, setBooks] = useState<IBook[]>([]);
 
-    const getSeries = async () => {
-        console.log("getSeries");
+    const getBooks = async () => {
+        const newBook: IBook = { name: 'Test', author: 'Test' };
         fetch('http://localhost:8080/api/books')
             .then(response => response.json())
-            .then(booksJson => setBooks(booksJson));
+            .then(booksJson => {
+                setBooks(booksJson);
+            });
+    }
+
+    const addBook = async () => {
+        const newBook: IBook = { name: nameInput.value, author: authorInput.value };
+        nameInput.value = '';
+        authorInput.value = '';
+        setBooks(books => [...books, newBook]);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newBook)
+        };
+        fetch('http://localhost:8080/api/books', requestOptions);
     }
 
     useEffect(() => {
-        getSeries();
+        getBooks();
     }, []);
 
     return (
         <div>
-            <h2>Books!</h2>
-            {books.map(book =>
-                <div>
-                    <div>{book.name}</div>
-                    <div>{book.author}</div>
-                </div>
-            )}
+            <h2>Books</h2>
+            <div>
+                {books.map(book =>
+                    <div>
+                        <div>{book.name} - {book.author}</div>
+                    </div>
+                )}
+            </div>
+            <input ref={node => {
+                nameInput = node;
+            }} />
+            <input ref={node => {
+                authorInput = node;
+            }} />
+            <button onClick={() => {
+                addBook();
+            }}>Add Book:</button>
         </div>
     );
 };
