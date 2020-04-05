@@ -1,30 +1,37 @@
 
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-interface IBook{
-    name:string,
-    author:string
+interface IBook {
+    name: string,
+    author: string
 }
 
 const BooksMock = [
     {
-        name: "Harry Potter 1",
-        author: "JK Rowling"
+        name: "Davinci's code",
+        author: "Dan Brown"
     },
     {
-        name: "Harry Potter 2",
-        author: "JK Rowling"
-    },
-    {
-        name: "Harry Potter 3",
-        author: "JK Rowling"
+        name: "Inferno",
+        author: "Dan Brown"
     }
 ];
 
 export const Books = () => {
 
     const [books, setBooks] = useState<IBook[]>(BooksMock);
+
+    const getSeries = async () => {
+        console.log("getSeries");
+        fetch('http://localhost:8080/api/books')
+            .then(response => response.json())
+            .then(booksJson => setBooks(booksJson));
+    }
+
+    useEffect(() => {
+        getSeries();
+    }, []);
 
     return (
         <div>
