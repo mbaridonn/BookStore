@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Card from 'react-bootstrap/Card';
+import { CardColumns } from 'react-bootstrap';
 
 interface IBook {
     name: string,
@@ -42,14 +44,17 @@ export const Books = () => {
     return (
         <div>
             <h2>Books</h2>
-            <div>
+            <CardColumns>
                 {books.map(book =>
-                    <div>
-                        <img src={book.imageUrl} />
-                        <div>{book.name} - {book.author}</div>
-                    </div>
+                    <Card border="dark" style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Img variant="top" src={book.imageUrl} />
+                            <Card.Title>{book.name}</Card.Title>
+                            <Card.Text>{book.author}</Card.Text>
+                        </Card.Body>
+                    </Card>
                 )}
-            </div>
+            </CardColumns>
             <input ref={node => {
                 nameInput = node;
             }} />
