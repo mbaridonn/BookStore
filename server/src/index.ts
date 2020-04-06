@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import * as routes from "./routes";
 import * as bodyParser from "body-parser";
 
@@ -7,6 +8,7 @@ const port = 8080; // default port to listen
 
 app.use(bodyParser.json());
 
+app.use(cors());
 routes.register(app);
 
 // start the Express server
