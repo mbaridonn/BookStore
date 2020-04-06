@@ -9,6 +9,7 @@ import {
 import Welcome from './Welcome';
 import { Home } from './Home/Home';
 import { Books } from './Books/Books';
+import { NewBook } from './Books/NewBook';
 
 const App = () =>
   <Router>
@@ -22,7 +23,10 @@ const App = () =>
             <Link to="/welcome">Welcome</Link>
           </li>
           <li>
-            <Link to="books">Books</Link>
+            <Link to="/books">Books</Link>
+          </li>
+          <li>
+            <Link to ="/newBook">New Book</Link>
           </li>
         </ul>
       </nav>
@@ -30,6 +34,9 @@ const App = () =>
       <Switch>
         <Route path="/books">
           <Books />
+        </Route>
+        <Route path="/newBook">
+          <NewBook />
         </Route>
         <Route path="/welcome">
           <Welcome name="Martiniano" />
