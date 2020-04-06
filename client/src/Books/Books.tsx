@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 
 interface IBook {
     name: string,
-    author: string
+    author: string,
+    imageUrl: string
 }
 
 export const Books = () => {
@@ -14,7 +15,6 @@ export const Books = () => {
     const [books, setBooks] = useState<IBook[]>([]);
 
     const getBooks = async () => {
-        const newBook: IBook = { name: 'Test', author: 'Test' };
         fetch('http://localhost:8080/api/books')
             .then(response => response.json())
             .then(booksJson => {
@@ -23,7 +23,7 @@ export const Books = () => {
     }
 
     const addBook = async () => {
-        const newBook: IBook = { name: nameInput.value, author: authorInput.value };
+        const newBook: IBook = { name: nameInput.value, author: authorInput.value, imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShCopZfcBk6RUL6wL3JQT8rGCeCc4aD-AY5AqH2XjETlReQ8n0&usqp=CAU' };
         nameInput.value = '';
         authorInput.value = '';
         setBooks(books => [...books, newBook]);
@@ -45,6 +45,7 @@ export const Books = () => {
             <div>
                 {books.map(book =>
                     <div>
+                        <img src={book.imageUrl} />
                         <div>{book.name} - {book.author}</div>
                     </div>
                 )}

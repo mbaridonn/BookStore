@@ -5,7 +5,7 @@ export const books = [
         imageUrl: "https://s2982.pcdn.co/wp-content/uploads/2014/08/HP_hc_new_1.jpeg"
     },
     {
-        name: "Harry Potter adn the Chamber of Secrets",
+        name: "Harry Potter and the Chamber of Secrets",
         author: "JK Rowling",
         imageUrl: "https://s2982.pcdn.co/wp-content/uploads/2014/08/HP_hc_new_2-e1407533769415.jpeg"
     },
