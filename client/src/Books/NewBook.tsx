@@ -17,7 +17,7 @@ export const NewBook = () => {
         fetch('http://localhost:8080/api/books', requestOptions);
     }
 
-    return(
+    return (
         <div>
             <h2>New book here!</h2>
             <input ref={node => {

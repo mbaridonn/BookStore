@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import { CardColumns } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { IBook } from './IBook';
 
 export const Books = () => {
@@ -23,17 +23,21 @@ export const Books = () => {
     return (
         <div>
             <h2>Books</h2>
-            <CardColumns>
-                {books.map(book =>
-                    <Card border="dark" style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Img variant="top" src={book.imageUrl} />
-                            <Card.Title>{book.name}</Card.Title>
-                            <Card.Text>{book.author}</Card.Text>
-                        </Card.Body>
-                    </Card>
-                )}
-            </CardColumns>
+            <Container>
+                <Row>
+                    {books.map(book =>
+                        <Col xs="3">
+                            <Card border="dark" style={{ width: '18rem' }}>
+                                <Card.Body>
+                                    <Card.Img variant="top" src={book.imageUrl} />
+                                    <Card.Title>{book.name}</Card.Title>
+                                    <Card.Text>{book.author}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    )}
+                </Row>
+            </Container>
         </div>
     );
 };
