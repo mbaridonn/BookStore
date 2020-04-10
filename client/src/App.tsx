@@ -6,7 +6,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Welcome from './Welcome';
 import { Home } from './Home/Home';
 import { Books } from './Books/Books';
 import { NewBook } from './Books/NewBook';
@@ -19,9 +18,6 @@ const App = () =>
         <ul>
           <li>
             <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/welcome">Welcome</Link>
           </li>
           <li>
             <Link to="/books">Books</Link>
@@ -41,9 +37,6 @@ const App = () =>
         </Route>
         <Route path="/books">
           <Books />
-        </Route>
-        <Route path="/welcome">
-          <Welcome name="Martiniano" />
         </Route>
         <Route path="/">
           <Home />
