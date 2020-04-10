@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import { IBook } from './IBook';
+import { Link } from 'react-router-dom';
 
 export const Books = () => {
     const [books, setBooks] = useState<IBook[]>([]);
@@ -30,7 +31,9 @@ export const Books = () => {
                             <Card border="dark" style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Img variant="top" src={book.imageUrl} />
-                                    <Card.Title>{book.name}</Card.Title>
+                                    <Card.Title>
+                                        <Link to={`/books/${book.id}`}>{book.name}</Link>
+                                    </Card.Title>
                                     <Card.Text>{book.author}</Card.Text>
                                 </Card.Body>
                             </Card>

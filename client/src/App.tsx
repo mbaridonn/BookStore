@@ -10,6 +10,7 @@ import Welcome from './Welcome';
 import { Home } from './Home/Home';
 import { Books } from './Books/Books';
 import { NewBook } from './Books/NewBook';
+import { Book } from './Books/Book';
 
 const App = () =>
   <Router>
@@ -26,12 +27,15 @@ const App = () =>
             <Link to="/books">Books</Link>
           </li>
           <li>
-            <Link to ="/newBook">New Book</Link>
+            <Link to="/newBook">New Book</Link>
           </li>
         </ul>
       </nav>
 
       <Switch>
+        <Route path="/books/:id">
+          <Book />
+        </Route>
         <Route path="/books">
           <Books />
         </Route>
