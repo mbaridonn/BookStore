@@ -26,8 +26,9 @@ export const register = (app: express.Application) => {
     });
 
     app.post("/api/books", (req, res) => {
-        books.push(req.body);
-        res.json(req.body);
+        const newBook = { id: newBookId(), ...req.body };
+        books.push(newBook);
+        res.json(newBook);
     });
 
     app.delete("/api/books/:id", (req, res) => {
@@ -36,10 +37,15 @@ export const register = (app: express.Application) => {
         res.status(200).send();
     });
 
-    function getBookId(reqID:string) : number{
-        let id:number = +reqID;
+    function getBookId(reqID: string): number {
+        let id: number = +reqID;
         id--;
         return id;
     }
 
+    function newBookId(): string {
+        const lastBookId = books.slice(-1)[0].id;
+        const newId = +lastBookId + 1;
+        return newId.toString();
+    }
 }
