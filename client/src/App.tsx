@@ -27,20 +27,20 @@ const App = () =>
             <Link to="/books">Books</Link>
           </li>
           <li>
-            <Link to="/newBook">New Book</Link>
+            <Link to="/books/new">New Book</Link>
           </li>
         </ul>
       </nav>
 
       <Switch>
+      <Route path="/books/new">
+          <NewBook />
+        </Route>
         <Route path="/books/:id">
           <Book />
         </Route>
         <Route path="/books">
           <Books />
-        </Route>
-        <Route path="/newBook">
-          <NewBook />
         </Route>
         <Route path="/welcome">
           <Welcome name="Martiniano" />
