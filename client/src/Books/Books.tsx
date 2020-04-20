@@ -1,38 +1,20 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-
-interface IBook {
-    name: string,
-    author: string
-}
+import Card from 'react-bootstrap/Card';
+import { Container, Row, Col } from 'react-bootstrap';
+import { IBook } from './IBook';
+import { Link } from 'react-router-dom';
 
 export const Books = () => {
-
-    let nameInput: any;
-    let authorInput: any;
     const [books, setBooks] = useState<IBook[]>([]);
 
     const getBooks = async () => {
-        const newBook: IBook = { name: 'Test', author: 'Test' };
         fetch('http://localhost:8080/api/books')
             .then(response => response.json())
             .then(booksJson => {
                 setBooks(booksJson);
             });
-    }
-
-    const addBook = async () => {
-        const newBook: IBook = { name: nameInput.value, author: authorInput.value };
-        nameInput.value = '';
-        authorInput.value = '';
-        setBooks(books => [...books, newBook]);
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newBook)
-        };
-        fetch('http://localhost:8080/api/books', requestOptions);
     }
 
     useEffect(() => {
@@ -42,22 +24,23 @@ export const Books = () => {
     return (
         <div>
             <h2>Books</h2>
-            <div>
-                {books.map(book =>
-                    <div>
-                        <div>{book.name} - {book.author}</div>
-                    </div>
-                )}
-            </div>
-            <input ref={node => {
-                nameInput = node;
-            }} />
-            <input ref={node => {
-                authorInput = node;
-            }} />
-            <button onClick={() => {
-                addBook();
-            }}>Add Book:</button>
+            <Container>
+                <Row>
+                    {books.map(book =>
+                        <Col xs="3">
+                            <Card border="dark" style={{ width: '18rem' }}>
+                                <Card.Body>
+                                    <Card.Img variant="top" src={book.imageUrl} />
+                                    <Card.Title>
+                                        <Link to={`/books/${book.id}`}>{book.name}</Link>
+                                    </Card.Title>
+                                    <Card.Text>{book.author}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    )}
+                </Row>
+            </Container>
         </div>
     );
 };
