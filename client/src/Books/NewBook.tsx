@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { IBook } from './IBook';
 import { Form, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 export const NewBook = () => {
+
+    const history = useHistory();
 
     const addBook = async (form: any) => {
         var defaultImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShCopZfcBk6RUL6wL3JQT8rGCeCc4aD-AY5AqH2XjETlReQ8n0&usqp=CAU';
@@ -22,6 +25,7 @@ export const NewBook = () => {
     const handleSubmit = (event: any) => {
         var form = event.currentTarget.elements;
         addBook(form);
+        history.push('/');
     };
 
     return (
