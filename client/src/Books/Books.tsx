@@ -1,17 +1,22 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import { IBook } from "./IBook";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const Books = () => {
   const [books, setBooks] = useState<IBook[]>([]);
+  const [error, setError] = useState(false);
 
   const getBooks = async () => {
-    const { data } = await axios.get("http://localhost:8080/api/books");
-    setBooks(data);
+    try {
+      const { data } = await axios.get("http://localhost:8080/api/books");
+      setBooks(data);
+    } catch (error) {
+      setError(true);
+    }
   };
 
   useEffect(() => {
@@ -38,6 +43,11 @@ export const Books = () => {
           ))}
         </Row>
       </Container>
+      {error && (
+        <Alert variant="danger">
+          There was an error while loading the books.
+        </Alert>
+      )}
     </div>
   );
 };
