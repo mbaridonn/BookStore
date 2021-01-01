@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IBook } from "./IBook";
 import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export const NewBook = () => {
   const history = useHistory();
@@ -13,12 +14,8 @@ export const NewBook = () => {
       author: form.formBasicAuthor.value,
       imageUrl: form.formBasicImageUrl.value,
     };
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newBook),
-    };
-    fetch("http://localhost:8080/api/books", requestOptions);
+
+    axios.post("http://localhost:8080/api/books", newBook);
   };
 
   const handleSubmit = (event: any) => {
