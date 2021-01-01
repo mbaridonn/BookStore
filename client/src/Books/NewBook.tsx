@@ -26,12 +26,12 @@ export const NewBook = () => {
     if (validatedForm.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      var form = event.currentTarget.elements;
+      addBook(form);
+      history.push("/");
     }
     setValidated(true);
-
-    var form = event.currentTarget.elements;
-    addBook(form);
-    history.push("/");
   };
 
   return (
