@@ -1,34 +1,74 @@
-import React, { useState } from 'react';
-import { IBook } from './IBook';
+import React, { useState } from "react";
+import { IBook } from "./IBook";
+import { Form, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 export const NewBook = () => {
-    let nameInput: any;
-    let authorInput: any;
+  const history = useHistory();
+  const [validated, setValidated] = useState(false);
 
-    const addBook = async () => {
-        const newBook: IBook = { name: nameInput.value, author: authorInput.value, imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShCopZfcBk6RUL6wL3JQT8rGCeCc4aD-AY5AqH2XjETlReQ8n0&usqp=CAU' };
-        nameInput.value = '';
-        authorInput.value = '';
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newBook)
-        };
-        fetch('http://localhost:8080/api/books', requestOptions);
+  const addBook = async (form: any) => {
+    const newBook: IBook = {
+      name: form.formBasicName.value,
+      author: form.formBasicAuthor.value,
+      imageUrl: form.formBasicImageUrl.value,
+    };
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBook),
+    };
+    fetch("http://localhost:8080/api/books", requestOptions);
+  };
+
+  const handleSubmit = (event: any) => {
+    const validatedForm = event.currentTarget;
+    if (validatedForm.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      var form = event.currentTarget.elements;
+      addBook(form);
+      history.push("/");
     }
+    setValidated(true);
+  };
 
-    return (
-        <div>
-            <h2>New book here!</h2>
-            <input ref={node => {
-                nameInput = node;
-            }} />
-            <input ref={node => {
-                authorInput = node;
-            }} />
-            <button onClick={() => {
-                addBook();
-            }}>Add Book:</button>
-        </div>
-    );
-}
+  return (
+    <>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control required type="name" placeholder="Enter Name" />
+          <Form.Control.Feedback type="invalid">
+            Please provide a name.
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicAuthor">
+          <Form.Label>Author</Form.Label>
+          <Form.Control required type="author" placeholder="Enter Author" />
+          <Form.Control.Feedback type="invalid">
+            Please provide an author.
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicImageUrl">
+          <Form.Label>Image Url</Form.Label>
+          <Form.Control
+            required
+            type="imageurl"
+            placeholder="Enter Image Url"
+          />
+          <Form.Control.Feedback type="invalid">
+            Please provide an image url.
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </>
+  );
+};
