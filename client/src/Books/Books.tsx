@@ -39,7 +39,7 @@ export const Books = () => {
       <Container>
         <Row>
           {paginatedBooks.map((book) => (
-            <Col xs="3">
+            <Col key={book.id} xs="3">
               <Card border="dark" style={{ width: "18rem" }}>
                 <Card.Body>
                   <Card.Img variant="top" src={book.imageUrl} />

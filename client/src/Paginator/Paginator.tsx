@@ -40,6 +40,7 @@ export const Paginator = (props: IPaginatorProps) => {
       <Pagination>
         {pages.map((page) => (
           <Pagination.Item
+            key={page}
             active={page === activePage}
             onClick={() => changePage(page)}
           >
