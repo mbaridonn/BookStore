@@ -13,23 +13,23 @@ export const Books = () => {
   const [error, setError] = useState(false);
   const pageLimit = 3;
 
-  const getBooks = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:8080/api/books");
-      const books: IBook[] = data;
-      setBooks(books);
-      initFirstPage(books);
-    } catch (error) {
-      setError(true);
-    }
-  };
-
-  const initFirstPage = (books: IBook[]) => {
-    const firstBooks = books.slice(0, pageLimit);
-    setPaginatedBooks(firstBooks);
-  };
-
   useEffect(() => {
+    const getBooks = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:8080/api/books");
+        const books: IBook[] = data;
+        setBooks(books);
+        initFirstPage(books);
+      } catch (error) {
+        setError(true);
+      }
+    };
+    
+    const initFirstPage = (books: IBook[]) => {
+      const firstBooks = books.slice(0, pageLimit);
+      setPaginatedBooks(firstBooks);
+    };
+
     getBooks();
   }, []);
 
