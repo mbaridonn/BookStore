@@ -26,7 +26,7 @@ export const Book = () => {
     <div>
       <h1>{book?.name}</h1>
       <h2>{book?.author}</h2>
-      <img src={book?.imageUrl} />
+      <img alt={book?.name} src={book?.imageUrl} />
     </div>
   );
 };
