@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert, Pagination } from "react-bootstrap";
 import { IBook } from "./IBook";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -42,6 +42,13 @@ export const Books = () => {
             </Col>
           ))}
         </Row>
+      </Container>
+      <Container style={{ marginTop: "20px" }}>
+        <Pagination>
+          <Pagination.Item>1</Pagination.Item>
+          <Pagination.Item>2</Pagination.Item>
+          <Pagination.Item>3</Pagination.Item>
+        </Pagination>
       </Container>
       {error && (
         <Alert variant="danger">
