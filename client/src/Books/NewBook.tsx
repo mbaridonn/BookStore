@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { IBook } from "./IBook";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export const NewBook = () => {
   const history = useHistory();
   const [validated, setValidated] = useState(false);
+  const [error, setError] = useState(false);
 
   const addBook = async (form: any) => {
     const newBook: IBook = {
@@ -13,24 +15,28 @@ export const NewBook = () => {
       author: form.formBasicAuthor.value,
       imageUrl: form.formBasicImageUrl.value,
     };
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newBook),
-    };
-    fetch("http://localhost:8080/api/books", requestOptions);
+
+    await axios.post("http://localhost:8080/api/books", newBook);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     const validatedForm = event.currentTarget;
-    if (validatedForm.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
+
+    if (validatedForm.checkValidity() !== false) {
       var form = event.currentTarget.elements;
-      addBook(form);
-      history.push("/");
+
+      try {
+        await addBook(form);
+        history.push("/");
+      } catch (error) {
+        console.log("There was an error while creating a new book");
+        setError(true);
+      }
     }
+
     setValidated(true);
   };
 
@@ -69,6 +75,12 @@ export const NewBook = () => {
           Submit
         </Button>
       </Form>
+
+      {error && (
+        <Alert variant="danger">
+          There was an error while creating a new book.
+        </Alert>
+      )}
     </>
   );
 };
