@@ -11,7 +11,7 @@ export const Books = () => {
   const [books, setBooks] = useState<IBook[]>([]);
   const [paginatedBooks, setPaginatedBooks] = useState<IBook[]>([]);
   const [error, setError] = useState(false);
-  const pageLimit = 3;
+  const pageLimit = 6;
 
   useEffect(() => {
     const getBooks = async () => {
@@ -34,7 +34,7 @@ export const Books = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ background: 'gray'}}>
       <h2>Books</h2>
       <Container>
         <Row>
@@ -59,6 +59,9 @@ export const Books = () => {
           There was an error while loading the books.
         </Alert>
       )}
+      <div>
+        © BookStore 2021
+      </div>
     </div>
   );
 };
