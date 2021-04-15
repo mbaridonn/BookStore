@@ -43,45 +43,47 @@ export const NewBook = () => {
   return (
     <>
       <h1>New Book</h1>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicName" style={{ maxWidth: "30%" }}>
-          <Form.Label>Name</Form.Label>
-          <Form.Control required type="name" placeholder="Enter Name" />
-          <Form.Control.Feedback type="invalid">
-            Please provide a name.
-          </Form.Control.Feedback>
-        </Form.Group>
+      <div style={{ display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control required type="name" placeholder="Enter Name" />
+            <Form.Control.Feedback type="invalid">
+              Please provide a name.
+            </Form.Control.Feedback>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicAuthor" style={{ maxWidth: "30%" }}>
-          <Form.Label>Author</Form.Label>
-          <Form.Control required type="author" placeholder="Enter Author" />
-          <Form.Control.Feedback type="invalid">
-            Please provide an author.
-          </Form.Control.Feedback>
-        </Form.Group>
+          <Form.Group controlId="formBasicAuthor">
+            <Form.Label>Author</Form.Label>
+            <Form.Control required type="author" placeholder="Enter Author" />
+            <Form.Control.Feedback type="invalid">
+              Please provide an author.
+            </Form.Control.Feedback>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicImageUrl" style={{ maxWidth: "30%" }}>
-          <Form.Label>Image Url</Form.Label>
-          <Form.Control
-            required
-            type="imageurl"
-            placeholder="Enter Image Url"
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide an image url.
-          </Form.Control.Feedback>
-        </Form.Group>
+          <Form.Group controlId="formBasicImageUrl">
+            <Form.Label>Image Url</Form.Label>
+            <Form.Control
+              required
+              type="imageurl"
+              placeholder="Enter Image Url"
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide an image url.
+            </Form.Control.Feedback>
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
 
-      {error && (
-        <Alert variant="danger">
-          There was an error while creating a new book.
-        </Alert>
-      )}
+        {error && (
+          <Alert variant="danger">
+            There was an error while creating a new book.
+          </Alert>
+        )}
+      </div>
     </>
   );
 };
