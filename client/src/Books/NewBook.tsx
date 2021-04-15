@@ -42,8 +42,9 @@ export const NewBook = () => {
 
   return (
     <>
+      <h1>New Book</h1>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicName">
+        <Form.Group controlId="formBasicName" style={{ maxWidth: "30%" }}>
           <Form.Label>Name</Form.Label>
           <Form.Control required type="name" placeholder="Enter Name" />
           <Form.Control.Feedback type="invalid">
@@ -51,7 +52,7 @@ export const NewBook = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="formBasicAuthor">
+        <Form.Group controlId="formBasicAuthor" style={{ maxWidth: "30%" }}>
           <Form.Label>Author</Form.Label>
           <Form.Control required type="author" placeholder="Enter Author" />
           <Form.Control.Feedback type="invalid">
@@ -59,7 +60,7 @@ export const NewBook = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="formBasicImageUrl">
+        <Form.Group controlId="formBasicImageUrl" style={{ maxWidth: "30%" }}>
           <Form.Label>Image Url</Form.Label>
           <Form.Control
             required

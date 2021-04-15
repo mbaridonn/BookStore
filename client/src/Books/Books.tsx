@@ -35,7 +35,7 @@ export const Books = () => {
 
   return (
     <div style={{ background: 'gray'}}>
-      <h2>Books</h2>
+      <h1>Books</h1>
       <Container>
         <Row>
           {paginatedBooks.map((book) => (
