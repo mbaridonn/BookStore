@@ -6,6 +6,7 @@ import { Books } from "./Books/Books";
 import { NewBook } from "./Books/NewBook";
 import { Book } from "./Books/Book";
 import { SiteBar } from "./SiteBar/SiteBar";
+import { Footer } from "./Footer/Footer";
 
 const App = () => (
   <div style={{ background: "gray", minHeight: "100vh" }}>
@@ -26,6 +27,7 @@ const App = () => (
         </Route>
       </Switch>
     </Router>
+    <Footer />
   </div>
 );
 

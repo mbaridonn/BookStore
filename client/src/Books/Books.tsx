@@ -11,7 +11,7 @@ export const Books = () => {
   const [books, setBooks] = useState<IBook[]>([]);
   const [paginatedBooks, setPaginatedBooks] = useState<IBook[]>([]);
   const [error, setError] = useState(false);
-  const pageLimit = 6;
+  const pageLimit = 3;
 
   useEffect(() => {
     const getBooks = async () => {
@@ -24,7 +24,7 @@ export const Books = () => {
         setError(true);
       }
     };
-    
+
     const initFirstPage = (books: IBook[]) => {
       const firstBooks = books.slice(0, pageLimit);
       setPaginatedBooks(firstBooks);
@@ -34,7 +34,7 @@ export const Books = () => {
   }, []);
 
   return (
-    <div style={{ background: 'gray'}}>
+    <div>
       <h1>Books</h1>
       <Container>
         <Row>
@@ -53,15 +53,16 @@ export const Books = () => {
           ))}
         </Row>
       </Container>
-      <Paginator books={books} pageLimit={pageLimit} handleClick={setPaginatedBooks}></Paginator>
+      <Paginator
+        books={books}
+        pageLimit={pageLimit}
+        handleClick={setPaginatedBooks}
+      ></Paginator>
       {error && (
         <Alert variant="danger">
           There was an error while loading the books.
         </Alert>
       )}
-      <div>
-        © BookStore 2021
-      </div>
     </div>
   );
 };
