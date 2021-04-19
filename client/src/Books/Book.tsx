@@ -28,7 +28,7 @@ export const Book = () => {
       <div>
         <h1>{book?.name}</h1>
         <h2>{book?.author}</h2>
-        <img alt={book?.name} src={book?.imageUrl} />
+        <img style={{width:"100%",maxWidth:"350px"}} alt={book?.name} src={book?.imageUrl} />
       </div>
       <Link to={"/"}>
         <Button style={{ marginTop: "30px" }}>Back</Button>
