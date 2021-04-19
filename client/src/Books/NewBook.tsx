@@ -52,7 +52,7 @@ export const NewBook = () => {
       >
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label column="lg">Name</Form.Label>
             <Form.Control
               size="lg"
               required
@@ -64,7 +64,7 @@ export const NewBook = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="formBasicAuthor">
-            <Form.Label>Author</Form.Label>
+            <Form.Label column="lg">Author</Form.Label>
             <Form.Control
               size="lg"
               required
@@ -76,7 +76,7 @@ export const NewBook = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="formBasicImageUrl">
-            <Form.Label>Image Url</Form.Label>
+            <Form.Label column="lg">Image Url</Form.Label>
             <Form.Control
               size="lg"
               required
@@ -87,9 +87,17 @@ export const NewBook = () => {
               Please provide an image url.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button size="lg" variant="primary" type="submit">
+              Submit
+            </Button>
+          </div>
         </Form>
         {error && (
           <Alert variant="danger">
