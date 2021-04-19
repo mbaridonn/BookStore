@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IBook } from "./IBook";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 interface BookProps {
   id?: string | undefined;
@@ -24,9 +25,14 @@ export const Book = () => {
 
   return (
     <div>
-      <h1>{book?.name}</h1>
-      <h2>{book?.author}</h2>
-      <img alt={book?.name} src={book?.imageUrl} />
+      <div>
+        <h1>{book?.name}</h1>
+        <h2>{book?.author}</h2>
+        <img alt={book?.name} src={book?.imageUrl} />
+      </div>
+      <Link to={"/"}>
+        <Button style={{ marginTop: "30px" }}>Back</Button>
+      </Link>
     </div>
   );
 };
