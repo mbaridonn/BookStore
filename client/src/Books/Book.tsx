@@ -3,11 +3,11 @@ import { IBook } from "./IBook";
 import { useParams } from "react-router-dom";
 
 interface BookProps {
-  id: string;
+  id?: string | undefined;
 }
 
 export const Book = () => {
-  let { id } = useParams();
+  let { id }: BookProps = useParams();
   const [book, setBook] = useState<IBook>();
 
   useEffect(() => {
