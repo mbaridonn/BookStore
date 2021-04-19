@@ -40,5 +40,35 @@ export const books = [
         name: "Harry Potter and the Deathly Hallows",
         author: "JK Rowling",
         imageUrl: "https://s2982.pcdn.co/wp-content/uploads/2014/08/HP_hc_new_7.jpeg"
+    },
+    {
+        id: "8",
+        name: "Angels & Demons",
+        author: "Dan Brown",
+        imageUrl: "https://images-na.ssl-images-amazon.com/images/I/81adkKbGZgL.jpg"
+    },
+    {
+        id: "9",
+        name: "Origin",
+        author: "Dan Brown",
+        imageUrl: "https://images.cdn1.buscalibre.com/fit-in/360x360/e0/ac/e0ac9aec0ae413d0ccd7f6f14c70f160.jpg"
+    },
+    {
+        id: "10",
+        name: "Inferno",
+        author: "Dan Brown",
+        imageUrl: "https://images.cdn2.buscalibre.com/fit-in/360x360/78/18/78186c23e9fd3df16e1106d1864229f3.jpg"
+    },
+    {
+        id: "11",
+        name: "The Da Vinci Code",
+        author: "Dan Brown",
+        imageUrl: "https://images-na.ssl-images-amazon.com/images/I/91Q5dCjc2KL.jpg"
+    },
+    {
+        id: "12",
+        name: "The Lost Symbol",
+        author: "Dan Brown",
+        imageUrl: "https://images-na.ssl-images-amazon.com/images/I/91zOf+6I60L.jpg"
     }
 ];
