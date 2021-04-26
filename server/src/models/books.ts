@@ -70,5 +70,17 @@ export const books = [
         name: "The Lost Symbol",
         author: "Dan Brown",
         imageUrl: "https://images-na.ssl-images-amazon.com/images/I/91zOf+6I60L.jpg"
+    },
+    {
+        id: "13",
+        name: "IT",
+        author: "Stephen King",
+        imageUrl: "https://images-na.ssl-images-amazon.com/images/I/71lZgzNE2kL.jpg"
+    },
+    {
+        id: "14",
+        name: "Pet Sematary",
+        author: "Stephen King",
+        imageUrl: "https://images-na.ssl-images-amazon.com/images/I/71+TwxaiHoL.jpg"
     }
 ];
