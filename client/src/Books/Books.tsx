@@ -17,7 +17,7 @@ export const Books = () => {
     return (
       <Row>
         {paginatedBooks.slice(start, end).map((book) => (
-          <Col style={{ padding: "5px 5px 5px 5px" }}>
+          <Col style={{flex:"0 0 217px", padding: "5px 5px 5px 5px" }}>
             <Card border="dark" style={{minHeight:"400px"}}>
               <Card.Body>
                 <Card.Img
