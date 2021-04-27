@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IBook } from "./IBook";
 import { Link, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 
 interface BookProps {
   id?: string | undefined;
@@ -24,15 +24,55 @@ export const Book = () => {
   }, []);
 
   return (
-    <div>
+    <Container
+      style={{
+        maxWidth: "80%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <div>
-        <h1>{book?.name}</h1>
-        <h2>{book?.author}</h2>
-        <img style={{width:"100%",maxWidth:"350px"}} alt={book?.name} src={book?.imageUrl} />
+        <h1
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {book?.name}
+        </h1>
+        <h2
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {book?.author}
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            style={{ width: "100%", maxWidth: "350px", marginTop: "30px" }}
+            alt={book?.name}
+            src={book?.imageUrl}
+          />
+        </div>
+        <Link style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "30px"
+          }} to={"/"}>
+          <Button>Back</Button>
+        </Link>
       </div>
-      <Link to={"/"}>
-        <Button style={{ marginTop: "30px" }}>Back</Button>
-      </Link>
-    </div>
+    </Container>
   );
 };
