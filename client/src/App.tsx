@@ -8,7 +8,7 @@ import { SiteBar } from "./SiteBar/SiteBar";
 import { Footer } from "./Footer/Footer";
 
 const App = () => (
-  <div style={{ background: "gray", minHeight: "100vh" }}>
+  <div>
     <Router>
       <SiteBar />
       <Switch>
