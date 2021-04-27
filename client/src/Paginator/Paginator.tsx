@@ -35,7 +35,7 @@ export const Paginator = (props: IPaginatorProps) => {
   }, [props.books, props.pageLimit]);
 
   return (
-    <Container style={{ marginTop: "20px" }}>
+    <Container style={{maxWidth: "80%", marginTop: "20px" }}>
       <Pagination>
         {pages.map((page) => (
           <Pagination.Item
