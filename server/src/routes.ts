@@ -39,8 +39,7 @@ export const register = (app: express.Application) => {
     });
 
     function getBookId(reqID: string): number {
-        let id: number = +reqID;
-        id--;
+        const id: number = +books.findIndex(book => book.id === reqID);
         return id;
     }
 
