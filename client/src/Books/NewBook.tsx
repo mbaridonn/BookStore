@@ -42,45 +42,69 @@ export const NewBook = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control required type="name" placeholder="Enter Name" />
-          <Form.Control.Feedback type="invalid">
-            Please provide a name.
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="formBasicAuthor">
-          <Form.Label>Author</Form.Label>
-          <Form.Control required type="author" placeholder="Enter Author" />
-          <Form.Control.Feedback type="invalid">
-            Please provide an author.
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="formBasicImageUrl">
-          <Form.Label>Image Url</Form.Label>
-          <Form.Control
-            required
-            type="imageurl"
-            placeholder="Enter Image Url"
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide an image url.
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-
-      {error && (
-        <Alert variant="danger">
-          There was an error while creating a new book.
-        </Alert>
-      )}
+      <h1>New Book</h1>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicName">
+            <Form.Label column="lg">Name</Form.Label>
+            <Form.Control
+              size="lg"
+              required
+              type="name"
+              placeholder="The Shining"
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide a name.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="formBasicAuthor">
+            <Form.Label column="lg">Author</Form.Label>
+            <Form.Control
+              size="lg"
+              required
+              type="author"
+              placeholder="Stephen King"
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide an author.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="formBasicImageUrl">
+            <Form.Label column="lg">Image Url</Form.Label>
+            <Form.Control
+              size="lg"
+              required
+              type="imageurl"
+              placeholder="www.example.com/shining.jpg"
+            />
+            <Form.Control.Feedback type="invalid">
+              Please provide an image url.
+            </Form.Control.Feedback>
+          </Form.Group>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button size="lg" variant="primary" type="submit">
+              Submit
+            </Button>
+          </div>
+        </Form>
+        {error && (
+          <Alert variant="danger">
+            There was an error while creating a new book.
+          </Alert>
+        )}
+      </div>
     </>
   );
 };

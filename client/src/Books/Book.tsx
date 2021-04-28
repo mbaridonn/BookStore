@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { IBook } from "./IBook";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Button, Container } from "react-bootstrap";
 
 interface BookProps {
-  id: string;
+  id?: string | undefined;
 }
 
 export const Book = () => {
-  let { id } = useParams();
+  let { id }: BookProps = useParams();
   const [book, setBook] = useState<IBook>();
 
   useEffect(() => {
@@ -23,10 +24,55 @@ export const Book = () => {
   }, []);
 
   return (
-    <div>
-      <h1>{book?.name}</h1>
-      <h2>{book?.author}</h2>
-      <img alt={book?.name} src={book?.imageUrl} />
-    </div>
+    <Container
+      style={{
+        maxWidth: "80%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div>
+        <h1
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {book?.name}
+        </h1>
+        <h2
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {book?.author}
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            style={{ width: "100%", maxWidth: "350px", marginTop: "30px" }}
+            alt={book?.name}
+            src={book?.imageUrl}
+          />
+        </div>
+        <Link style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "30px"
+          }} to={"/"}>
+          <Button>Back</Button>
+        </Link>
+      </div>
+    </Container>
   );
 };
