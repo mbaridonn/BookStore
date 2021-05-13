@@ -45,7 +45,7 @@ describe("Api Books", () => {
     });
 
     it("modifies a book", async () => {
-        var book = {
+        const book = {
             "name": "Harry Potter Tercero",
             "author": "JK Rowling"
         };
