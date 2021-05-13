@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as booksModule from "./models/books";
+import { v4 as uuidv4 } from 'uuid';
 
 export const register = (app: express.Application) => {
 
@@ -38,14 +39,11 @@ export const register = (app: express.Application) => {
     });
 
     function getBookId(reqID: string): number {
-        let id: number = +reqID;
-        id--;
+        const id: number = +books.findIndex(book => book.id === reqID);
         return id;
     }
 
     function newBookId(): string {
-        const lastBookId = books.slice(-1)[0].id;
-        const newId = +lastBookId + 1;
-        return newId.toString();
+        return uuidv4();
     }
 }

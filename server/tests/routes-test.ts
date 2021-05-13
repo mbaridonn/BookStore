@@ -27,28 +27,32 @@ describe("Api Books", () => {
     });
 
     it("gets the first book", async () => {
-        const result = await request(app).get("/api/books/1");
+        const result = await request(app).get("/api/books/b6cc50ef-1698-4067-b364-f3a2229632ed");
         expect(result.text).toEqual(JSON.stringify(books[0]));
         expect(result.status).toEqual(200);
     });
 
     it("posts a book", async () => {
-        var aBook = {
-            "name": "Harry Potter 888",
-            "author": "JK Rowling"
+        const book = {
+            name: "Harry Potter 888",
+            author: "JK Rowling"
         };
-        const result = await request(app).post("/api/books").send(aBook);
-        expect(result.text).toEqual(JSON.stringify(aBook));
+        const result = await request(app).post("/api/books").send(book);
+        const bookResult = JSON.parse(result.text);
+        expect(bookResult.name).toEqual(book.name);
+        expect(bookResult.author).toEqual(book.author);
         expect(result.status).toEqual(200);
     });
 
     it("modifies a book", async () => {
-        var aBook = {
+        const book = {
             "name": "Harry Potter Tercero",
             "author": "JK Rowling"
         };
-        const result = await request(app).put("/api/books/3").send(aBook);
-        expect(result.text).toEqual(JSON.stringify(books[2]));
+        const result = await request(app).put("/api/books/435b1321-ba1f-4021-ae5b-431dde5b41c3").send(book);
+        const bookResult = JSON.parse(result.text);
+        expect(bookResult.name).toEqual(book.name);
+        expect(bookResult.author).toEqual(book.author);
         expect(result.status).toEqual(200);
     });
 
