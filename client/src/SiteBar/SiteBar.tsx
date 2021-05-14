@@ -7,7 +7,7 @@ export const SiteBar = () => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link href="/books/new">New Book</Nav.Link>
+        <Nav.Link href="/adminpanel">Admin</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
