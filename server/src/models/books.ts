@@ -176,7 +176,7 @@ export const books = [
     {
         id: "e87e63d7-0c7a-4a61-9fcb-ceb11884a7a6",
         name: "A Clockwork Orange",
-        author: "Anthony Burgess",
+        author: "Anthony Burges",
         imageUrl: "https://i.pinimg.com/originals/32/f1/0c/32f10ce3bf551862f9e51cec4929c2cf.jpg"
     },
 ];
